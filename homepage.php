@@ -14,7 +14,103 @@
 }
 ?>
 
-<section id="home-page" class="page">
+<script>
+    $(document).ready(function() {
+    // Perform search
+    function performSearch() {
+        const query = $('#searchInput').val().trim();
+
+        // Optional: show a loader
+        $('#browse .listings-grid').html('<p>Loading results...</p>');
+
+        $.ajax({
+            url: 'search.php',
+            method: 'GET',
+            data: { q: query },
+            success: function(response) {
+                $('#browse .listings-grid').html(response);
+            },
+            error: function() {
+                $('#browse .listings-grid').html('<p>Something went wrong. Try again.</p>');
+            }
+        });
+    }
+
+    // Trigger search on button click
+    $('#searchBtn').on('click', function() {
+        performSearch();
+    });
+
+    // Trigger search on Enter key
+    $('#searchInput').on('keypress', function(e) {
+        if (e.which === 13) { // Enter key
+            performSearch();
+        }
+    });
+});
+</script>
+ <section id="home-page" class="page">
+                <!-- Hero Section -->
+                <section class="hero">
+                    <div class="hero-content">
+                        <h1>Connect, Learn, & Accomplish.</h1>
+                        <p>Your community's talent is just a click away. Offer your skills or find the help you need, right in your neighborhood.</p>
+                        <div class="hero-search">
+                            <input type="text" id="searchInput" placeholder="Search for 'guitar', 'moving', 'tutoring'...">
+                            <button id="searchBtn">Search</button>
+
+                        </div>
+                    </div>
+                </section>
+
+                 <!-- Browse Listings Section -->
+                <section id="browse" class="listings-section">
+                    <div class="container">
+                       <h2>Explore Local Opportunities</h2>
+                        <div class="listings-grid">
+                               <!-- Card 1: Offer -->
+                                <?php
+								$conn =mysqli_connect("localhost","root","","skillswap");
+								if(isset($_COOKIE["admin"])){
+									$loginUser=$_COOKIE["admin"];
+									$query = "select * from details where user<>'$loginUser' order by sn ";
+								}
+								else{
+									$query = "select * from details order by rand()";
+								}
+								$rs = mysqli_query($conn,$query);
+								while($r=mysqli_fetch_array($rs)){
+									$useremail = $r["user"];
+									$rs1 =mysqli_query($conn,"select * from admin where email ='$useremail'");
+									if($r1=mysqli_fetch_array($rs1)){
+										$name =$r1["name"];
+									}
+							?>
+                            <div class="card" data-task-id="1" data-title="<?=$r["topic"]?>" data-user="<?=$name?>" data-desc="<?=$r["description"]?>">
+                                <div class="card-header <?=$r["req_offer"]?>"><?=$r["req_offer"]?></div>
+                                <div class="card-body">
+                                    <h3><?=$r["topic"]?></h3>
+                                    <p class="card-user"><?=$name?></p>
+                                    <p><?=$r["description"]?></p>
+                                </div>
+										<div class="card-footer">
+										<?php if ($isUserLoggedIn): ?>
+                            <p onclick="connectpage('<?= $r['code'] ?>')" class="btn btn-primary connect-btn">Connect</p>
+                        <?php else: ?>
+                            <p class="btn btn-primary connect-btn requires-auth">Connect</p>
+                        <?php endif; ?>
+
+                                </div>
+                            </div>
+							<?php
+								}
+								?>
+                          
+                        </div>
+                    </div>
+                </section>
+            </section>
+
                 <!-- Hero Section -->
                 <section class="hero">
                     <div class="hero-content">
@@ -66,7 +162,7 @@
                         </div>
                     </div>
                 </section>
-            </section>
+ </section>
 
 
                 
