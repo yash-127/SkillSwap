@@ -2,7 +2,7 @@
 
     // Check if the user is logged in by looking for the 'admin' cookie
    
-    if(isset($_COOKIE["admin"])){
+  
          $conn=mysqli_connect("localhost","root","","skillswap");
     $isUserLoggedIn = isset($_COOKIE['admin']);
     // Get the user's email from the cookie if they are logged in
@@ -117,6 +117,3 @@
 
                 
 
-<?php
-    }
-    ?>
