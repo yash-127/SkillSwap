@@ -25,6 +25,10 @@ body {
     }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 .page { padding-top: 80px; min-height: calc(100vh - 120px); }
+.page.hidden { display: none; }
+#main-content.hidden { display: none; }
+.full-width { width: 100%; }
+.hidden { display: none !important; }
 
 
 
@@ -47,3 +51,19 @@ header nav { display: flex; justify-content: space-between; align-items: center;
 .hero-search { display: flex; max-width: 600px; margin: auto; box-shadow: var(--shadow-md); border-radius: var(--border-radius); }
 .hero-search input { flex-grow: 1; border: 1px solid #D1D5DB; padding: 16px; border-radius: var(--border-radius) 0 0 var(--border-radius); border-right: none; font-size: 1rem; }
 .hero-search button { padding: 0 24px; background: var(--primary-color); color: white; border: none; border-radius: 0 var(--border-radius) var(--border-radius) 0; cursor: pointer; font-weight: 600; font-size: 1rem; }
+
+
+.listings-section { background: var(--gray-100); padding: 80px 0; }
+.listings-section h2 { text-align: center; font-size: 2.5rem; margin-bottom: 50px; }
+.listings-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
+.card { background: var(--light-color); border-radius: var(--border-radius); box-shadow: var(--shadow-md); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+.card-header { padding: 10px 20px; color: var(--light-color); font-weight: 600; text-align: center; }
+.card-header.offer { background: var(--secondary-color); }
+.card-header.request { background: var(--accent-color); }
+.card-body { padding: 20px; flex-grow: 1; }
+.card-user { font-size: 0.9rem; color: #777; margin-bottom: 15px; }
+.card-footer { padding: 20px; border-top: 1px solid var(--gray-100); text-align: center; }
+.btn { padding: 12px 30px; text-decoration: none; border-radius: var(--border-radius); font-weight: 600; transition: all 0.3s ease; border: none; cursor: pointer; }
+.btn-primary { background: var(--primary-color); color: var(--light-color); }
+.btn-primary:hover { background-color: #4338CA; }

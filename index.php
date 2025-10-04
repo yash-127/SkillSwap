@@ -41,6 +41,39 @@
                     </div>
                 </section>
 
+                 <section id="browse" class="listings-section">
+                    <div class="container">
+                        <h2>Explore Local Opportunities</h2>
+                        <div class="listings-grid">
+                             <!-- Card 1: Offer -->
+                            <div class="card" data-task-id="1" data-title="Basic Guitar Lessons" data-user="Alex P." data-desc="Learn chords and basic songs. Absolute beginners welcome!">
+                                <div class="card-header offer">Offer</div>
+                                <div class="card-body">
+                                    <h3>Basic Guitar Lessons</h3>
+                                    <p class="card-user">by Alex P.</p>
+                                    <p>Learn chords and basic songs. Absolute beginners welcome!</p>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="/connect/1" class="btn btn-primary requires-auth connect-btn">Connect</a>
+                                </div>
+                            </div>
+                            <!-- Card 2: Request -->
+                            <div class="card" data-task-id="2" data-title="Need Help Moving a Couch" data-user="Maria G." data-desc="Looking for one strong person to help me move a couch this Saturday.">
+                                <div class="card-header request">Request</div>
+                                <div class="card-body">
+                                    <h3>Need Help Moving a Couch</h3>
+                                    <p class="card-user">by Maria G.</p>
+                                    <p>Looking for one strong person to help me move a couch this Saturday.</p>
+                                </div>
+                                <div class="card-footer">
+                                    <a href="/connect/2" class="btn btn-primary requires-auth connect-btn">Connect</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
 
     </div>
 
