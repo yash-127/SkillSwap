@@ -46,6 +46,9 @@ $taskPostedBy = $r1 ? htmlspecialchars($r1['name']) : "Unknown";
 $taskTopic = htmlspecialchars($task['topic']);
 $taskDesc = nl2br(htmlspecialchars($task['description']));
 $taskStatus = htmlspecialchars($task['req_offer']);
+$phone = htmlspecialchars($r1['phone']);
+$taskEmail= htmlspecialchars($r1['email']);
+$address = htmlspecialchars($r1['address']);
 ?>
 
 <div id="connect-page" class="page">
@@ -60,18 +63,25 @@ $taskStatus = htmlspecialchars($task['req_offer']);
             </div>
             <div class="connect-messaging">
                 <div class="messages-window">
-                    <div class="message received">
-                        <p>Hi there! I saw your post. I'd be happy to help out.</p>
-                        <span class="message-time">10:41 AM</span>
+                    <div class="card">
+                                <div class="card-header <?=$taskStatus?>"> Connection information </div>
+                                <div class="card-body">
+                                    <h3><?=$taskStatus?></h3>
+                                    <p class="card-user"> by <?=$taskPostedBy?></p><br>
+									<label><b>Phone Number :</b></label> <?=$phone?><br>
+                                    <label><b>Email Address :</b></label> <?=$taskEmail?><br>
+									<label><b>Present Address :</b> <?=$address?><br><br>
+									<?php
+										if($taskStatus == "request"){
+											$sentense = " With Help of the above mentioned information , if anyone truly want to help me out , then Kindly Contact Me ! ";
+										}
+										else{
+											$sentense = " If Anyone is willing and have great Sparkling Energy to learn Something New Like My topic . Then , Reach out to me with the help of above mentioned Information !";
+										}
+									?>
+									<p><i><?=$sentense?></i></p>
+                             </div>
                     </div>
-                    <div class="message sent">
-                        <p>That's great! Thanks for reaching out. When would you be free?</p>
-                        <span class="message-time">10:42 AM</span>
-                    </div>
-                </div>
-                <div class="message-input-area">
-                    <input type="text" placeholder="Type your message...">
-                    <button class="btn btn-primary">Send</button>
                 </div>
             </div>
         </div>
