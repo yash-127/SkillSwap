@@ -20,6 +20,8 @@ $r = mysqli_fetch_array($rs);
 
 $userName = $r ? $r['name'] : "Unknown";
 $userEmail = $r ? $r['email'] : "Unknown";
+$phone = $r ? $r['phone'] : "Unknown";
+$address= $r ? $r['address'] : "Unknown";
 
 //hackathon ke liye br br 
 
@@ -31,8 +33,10 @@ $userEmail = $r ? $r['email'] : "Unknown";
             <div class="profile-info">
                 <p><strong>Name:</strong> <?= htmlspecialchars($userName) ?></p>
                 <p><strong>Email:</strong> <?= htmlspecialchars($userEmail) ?></p>
+                <p><strong>Phone No:</strong> <?= htmlspecialchars($phone) ?></p>
+                <p><strong>Address:</strong> <?= htmlspecialchars($address) ?></p>
             </div>
-        </section><br><br><br>
+        </section><br>
 
         <section class="profile-section container">
             <h2>Your Listings</h2><br>

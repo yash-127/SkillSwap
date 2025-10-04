@@ -24,7 +24,7 @@
                         </div>
                         <div class="form-group"><label for="post-title">Title</label><input type="text" name="title" id="post-title" placeholder="e.g., 'Experienced Dog Walker Available'" required></div>
                         <div class="form-group"><label for="post-description">Description</label><textarea name="description" id="post-description" rows="4" placeholder="Provide more details..." required></textarea></div>
-                        <div class="form-group"><label for="post-category">Category</label><select id="post-category" name="category" required><option value="" disabled selected>Select a category...</option><option value="home">Home & Garden</option><option value="tech">Tech & IT</option><option value="art">Art & Creation</option><option value="music">Music & insturments</option></select></div>
+                        <div class="form-group"><label for="post-category">Category</label><select id="post-category" name="category" required><option value="" disabled selected>Select a category...</option><option value="home">Home & Garden</option><option value="tech">Tech & IT</option><option value="art">Art & Creation</option><option value="music">Music & insturments</option><option value="music">Others</option></select></div>
                         <button type="submit" class="btn btn-primary full-width">Post Your Listing</button>
                     </form>
                 </div>

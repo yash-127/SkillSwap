@@ -37,7 +37,7 @@
         </div>
 
         <!-- Logged-out Links -->
-        <div class="nav-auth <?php if ($isUserLoggedIn) echo 'hidden'; ?>" id="nav-auth-logged-out">
+        <div  class="nav-auth <?php if ($isUserLoggedIn) echo 'hidden'; ?>" id="nav-auth-logged-out">
             <a style="cursor:pointer;" class="login-btn nav-link requires-auth">Login</a>
             <a style="cursor:pointer;" class="signup-btn nav-link requires-auth" data-target-signup="true">Sign Up</a>
         </div>
