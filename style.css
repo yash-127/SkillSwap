@@ -23,6 +23,11 @@ body {
      background-color: var(--light-color); 
      line-height: 1.6; 
     }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.page { padding-top: 80px; min-height: calc(100vh - 120px); }
+
+
+
 header { background: var(--light-color); box-shadow: var(--shadow-sm); border-bottom: 1px solid var(--gray-100); position: fixed; width: 100%; top: 0; z-index: 900; }
 header nav { display: flex; justify-content: space-between; align-items: center; height: 70px; }
 .logo { font-weight: 700; font-size: 1.5rem; color: var(--primary-color); text-decoration: none; }
@@ -33,3 +38,12 @@ header nav { display: flex; justify-content: space-between; align-items: center;
 .signup-btn, .logout-btn { background: var(--primary-color); color: var(--light-color); padding: 8px 16px; border-radius: var(--border-radius); transition: background-color 0.3s ease; text-decoration: none; }
 .signup-btn:hover, .logout-btn:hover { background-color: #4338CA; color: var(--light-color); }
 .welcome-user { font-weight: 500; color: var(--gray-500); }
+
+
+
+.hero { background: linear-gradient(135deg, rgba(79, 70, 229, 0.05), rgba(243, 244, 246, 0.1)); text-align: center; padding: 100px 24px; }
+.hero-content h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem; }
+.hero-content p { font-size: 1.25rem; max-width: 700px; margin: 0 auto 2.5rem; color: var(--gray-500); }
+.hero-search { display: flex; max-width: 600px; margin: auto; box-shadow: var(--shadow-md); border-radius: var(--border-radius); }
+.hero-search input { flex-grow: 1; border: 1px solid #D1D5DB; padding: 16px; border-radius: var(--border-radius) 0 0 var(--border-radius); border-right: none; font-size: 1rem; }
+.hero-search button { padding: 0 24px; background: var(--primary-color); color: white; border: none; border-radius: 0 var(--border-radius) var(--border-radius) 0; cursor: pointer; font-weight: 600; font-size: 1rem; }

@@ -18,8 +18,8 @@
                 <a href="/post" class="nav-link requires-auth">Post a Task</a>
             </div>
             <div class="nav-auth" id="nav-auth-logged-out">
-                <a href="/login" class="login-btn nav-link">Login</a>
-                <a href="/login" class="signup-btn nav-link" data-target-signup="true">Sign Up</a>
+                <a href="/login" class="login-btn nav-link requires-auth">Login</a>
+                <a href="/login" class="signup-btn nav-link requires-auth" data-target-signup="true">Sign Up</a>
             </div>
             <div class="nav-auth hidden" id="nav-auth-logged-in">
                  <span class="welcome-user">Welcome, User!</span>
@@ -27,6 +27,22 @@
             </div>
         </nav>
     </header>
+    <div id="main-content">
+         <section id="home-page" class="page">
+                <!-- Hero Section -->
+                <section class="hero">
+                    <div class="hero-content">
+                        <h1>Connect, Learn, & Accomplish.</h1>
+                        <p>Your community's talent is just a click away. Offer your skills or find the help you need, right in your neighborhood.</p>
+                        <div class="hero-search">
+                            <input type="text" id="searchInput" placeholder="Search for 'guitar', 'moving', 'tutoring'...">
+                            <button>Search</button>
+                        </div>
+                    </div>
+                </section>
+
+
+    </div>
 
 </body>
 </html>
