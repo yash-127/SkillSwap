@@ -103,3 +103,38 @@ function profile() {
     showSkeleton('post');
     $('#main-content').load('profile.php');
 }
+
+
+$(document).ready(function() {
+    // Perform search
+    function performSearch() {
+        const query = $('#searchInput').val().trim();
+
+        // Optional: show a loader
+        $('#browse .listings-grid').html('<p>Loading results...</p>');
+
+        $.ajax({
+            url: 'search.php',
+            method: 'GET',
+            data: { q: query },
+            success: function(response) {
+                $('#browse .listings-grid').html(response);
+            },
+            error: function() {
+                $('#browse .listings-grid').html('<p>Something went wrong. Try again.</p>');
+            }
+        });
+    }
+
+    // Trigger search on button click
+    $('#searchBtn').on('click', function() {
+        performSearch();
+    });
+
+    // Trigger search on Enter key
+    $('#searchInput').on('keypress', function(e) {
+        if (e.which === 13) { // Enter key
+            performSearch();
+        }
+    });
+});

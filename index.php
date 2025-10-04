@@ -56,8 +56,9 @@
     </nav>
 </header>
 
-    <div id="main-content">
-         <section id="home-page" class="page">
+     <main>
+        <div id="main-content">
+            <section id="home-page" class="page">
                 <!-- Hero Section -->
                 <section class="hero">
                     <div class="hero-content">
@@ -65,48 +66,69 @@
                         <p>Your community's talent is just a click away. Offer your skills or find the help you need, right in your neighborhood.</p>
                         <div class="hero-search">
                             <input type="text" id="searchInput" placeholder="Search for 'guitar', 'moving', 'tutoring'...">
-                            <button>Search</button>
+                            <button id="searchBtn">Search</button>
+
                         </div>
                     </div>
                 </section>
 
-                 <section id="browse" class="listings-section">
+                 <!-- Browse Listings Section -->
+                <section id="browse" class="listings-section">
                     <div class="container">
-                        <h2>Explore Local Opportunities</h2>
+                       <h2>Explore Local Opportunities</h2>
                         <div class="listings-grid">
-                             <!-- Card 1: Offer -->
-                            <div class="card" data-task-id="1" data-title="Basic Guitar Lessons" data-user="Alex P." data-desc="Learn chords and basic songs. Absolute beginners welcome!">
-                                <div class="card-header offer">Offer</div>
+                               <!-- Card 1: Offer -->
+                                <?php
+								$conn =mysqli_connect("localhost","root","","skillswap");
+								if(isset($_COOKIE["admin"])){
+									$loginUser=$_COOKIE["admin"];
+									$query = "select * from details where user<>'$loginUser' order by sn ";
+								}
+								else{
+									$query = "select * from details order by rand()";
+								}
+								$rs = mysqli_query($conn,$query);
+								while($r=mysqli_fetch_array($rs)){
+									$useremail = $r["user"];
+									$rs1 =mysqli_query($conn,"select * from admin where email ='$useremail'");
+									if($r1=mysqli_fetch_array($rs1)){
+										$name =$r1["name"];
+									}
+							?>
+                            <div class="card" data-task-id="1" data-title="<?=$r["topic"]?>" data-user="<?=$name?>" data-desc="<?=$r["description"]?>">
+                                <div class="card-header <?=$r["req_offer"]?>"><?=$r["req_offer"]?></div>
                                 <div class="card-body">
-                                    <h3>Basic Guitar Lessons</h3>
-                                    <p class="card-user">by Alex P.</p>
-                                    <p>Learn chords and basic songs. Absolute beginners welcome!</p>
+                                    <h3><?=$r["topic"]?></h3>
+                                    <p class="card-user"><?=$name?></p>
+                                    <p><?=$r["description"]?></p>
                                 </div>
-                                <div class="card-footer">
-                                    <a href="/connect/1" class="btn btn-primary requires-auth connect-btn">Connect</a>
+										<div class="card-footer">
+										<?php if ($isUserLoggedIn): ?>
+                            <p onclick="connectpage('<?= $r['code'] ?>')" class="btn btn-primary connect-btn">Connect</p>
+                        <?php else: ?>
+                            <p class="btn btn-primary connect-btn requires-auth">Connect</p>
+                        <?php endif; ?>
+
                                 </div>
                             </div>
-                            <!-- Card 2: Request -->
-                            <div class="card" data-task-id="2" data-title="Need Help Moving a Couch" data-user="Maria G." data-desc="Looking for one strong person to help me move a couch this Saturday.">
-                                <div class="card-header request">Request</div>
-                                <div class="card-body">
-                                    <h3>Need Help Moving a Couch</h3>
-                                    <p class="card-user">by Maria G.</p>
-                                    <p>Looking for one strong person to help me move a couch this Saturday.</p>
-                                </div>
-                                <div class="card-footer">
-                                    <a href="/connect/2" class="btn btn-primary requires-auth connect-btn">Connect</a>
-                                </div>
-                            </div>
+							<?php
+								}
+								?>
+                          
                         </div>
                     </div>
                 </section>
             </section>
 
+           
+        </div>
+        
+    </main>
+
 
     </div>
 
-    <div id="auth-modal" class="modal-overlay hidden">
+     <div id="auth-modal" class="modal-overlay hidden">
         <div class="modal-content">
             <button id="close-modal-btn" class="close-btn">&times;</button>
             <div class="auth-form-wrapper" id="auth-wrapper">
@@ -119,11 +141,14 @@
                     <p class="auth-toggle-link">No account yet? <a href="#" id="show-signup">Sign up</a></p>
                 </form>
                 <!-- Signup Form -->
+<!-- Signup Form -->
                 <form  method="post" action="register.php" class="auth-form" id="signup-form" style="display: none;">
                     <h2>Join SkillSwap ✨</h2><br>
                     <div class="form-group"><label for="signup-name">Full Name</label><input type="text" name="name" id="signup-name" required></div>
                     <div class="form-group"><label for="signup-email">Email</label><input type="email" name="email" id="signup-email" required></div>
                     <div class="form-group"><label for="signup-password">Password</label><input type="password" name="password" id="signup-password" required></div>
+					<div class="form-group"><label for="signup-phone">Phone No.</label><input type="text" name="phone" id="signup-phone" required></div>
+					<div class="form-group"><label for="signup-address">Address</label><input type="text" name="address" id="signup-address" required></div>
                     <button type="submit" class="btn btn-primary full-width">Create Account</button>
                     <p class="auth-toggle-link">Already have an account? <a href="#" id="show-login">Log in</a></p>
                 </form>
@@ -135,4 +160,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
